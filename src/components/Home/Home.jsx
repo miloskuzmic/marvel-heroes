@@ -1,19 +1,23 @@
 import {Fragment} from 'react';
-import Header from './Header'
-import {Footer} from './Footer'
+
 //import {UserList} from './userlist/UserList'
 //import React, {useState} from 'react';
 //import {Search} from './Search'
-import { HeroCards} from './HeroCards';
+import { HeroCards} from '../HeroCards/HeroCards';
+import Header from "../Header/Header"
+import {Footer} from "../Footer/Footer"
+import { HeroList } from '../HeroList/HeroList';
 
 const Home = () => {  
     
   return (
     <Fragment>
       <Header />
+      <div className='container row'>
       <HeroCards />
       {/* <Search /> */}
-      {/* <HeroList /> */}
+      <HeroList/>
+      </div>
       <Footer />      
     </Fragment>        
     )
