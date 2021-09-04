@@ -8,6 +8,17 @@ export async function getCharData() {
     return jsonResult;
 }
 
+export async function getSearchData(text) {
+  let link = `https://gateway.marvel.com/v1/public/characters?nameStartsWith=${text}&ts=1&apikey=b84f0bb757b28ebfc93d153cb980b89d&hash=a2c004ddfea0c4a6ca6a76d3bf467fde`;
+
+  let result = await fetch(link);
+  let jsonResult = await result.json();
+  console.log('hello')
+  return jsonResult;
+}
+
+
+
 
 
 
