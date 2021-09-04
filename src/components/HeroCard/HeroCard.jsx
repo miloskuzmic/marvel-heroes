@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 
-export const HeroCard = ({name, image}) => {  
+export const HeroCard = ({name, image,fillMyTeam,id}) => {  
  let style1 = {width: '18 rem'}
   return (  
   
@@ -12,7 +12,7 @@ export const HeroCard = ({name, image}) => {
           <h5 className="card-title">{name}</h5>
           <p className="card-text text-primary">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
           <Link to="/Hero" >Info</Link>
-          <button>Add</button>
+          <button onClick={()=>fillMyTeam(id)} >Add</button>
         </div>
     </div> )
 }

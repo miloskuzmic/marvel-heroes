@@ -1,8 +1,8 @@
 import React from 'react';
 
-export const HeroListItem = () => {
+export const HeroListItem = ({img, name}) => {
 
-    return (<li class="list-group-item">An item</li>
+    return (<li class="list-group-item"><img src={img + '/standard_small.jpg'} alt={name} /><h1>{name}</h1></li>
     )
 
 

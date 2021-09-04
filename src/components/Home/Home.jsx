@@ -12,7 +12,7 @@ import { getCharData, getSearchData } from "../../server/getData";
 const Home = () => {
   const [data, setData] = useState([]);
   const [text, setText] = useState("");
-  
+ const [arrayOfHeroes, setarrayOfHeroes]= useState([])
 
   async function changeSearchInput() {
     let dataResult = [];
@@ -24,26 +24,31 @@ const Home = () => {
 
     setData(dataResult.data.results);
   }
+  let neki =[]
+  const fillMyTeam = (id) => {
+    data.forEach(element =>{
+        if (element.id === id){
+          
+          neki.push(element)
+          console.log('neki',neki)
+          return setarrayOfHeroes([...arrayOfHeroes,neki])
+        }
+      })
+    // console.log(id)
+    // data.forEach(element =>{
+    //   if (element.id === id){
+    //     return arrayOfHeroes.push({name:element.name})
+    //   }
+    // })
+    
+    console.log('nesto', arrayOfHeroes)
+    
 
-  async function initData() {
-    let dataResult = await getCharData();
-
-    //if(dataResult!=null && dataResult.body!=null && dataResult.body.length>0) {
-    setData(dataResult.data.results);
-    //}
   }
 
-  async function initSearch() {
-    let dataResult = await getSearchData(text);
-
-    //if(dataResult!=null && dataResult.body!=null && dataResult.body.length>0) {
-    setData(dataResult.data.results);
-    //}
-  }
-
-  console.log(data);
+ 
   useEffect(() => {
-    initData();
+    changeSearchInput();
   }, []);
 
   return (
@@ -51,8 +56,8 @@ const Home = () => {
       <Header />
       <Search search={setText} changeSearchInput={changeSearchInput} />
       <div className="container row">
-        <HeroCards data={data} />
-        <HeroList />
+        <HeroCards data={data} fillMyTeam={fillMyTeam} />
+        <HeroList addedHeroes={arrayOfHeroes} />
       </div>
       <Footer />
     </Fragment>
