@@ -3,12 +3,12 @@ import {HeroCard} from "../HeroCard/HeroCard"
 
 
 
-export const HeroCards = () => {
-    let array = [1,2,3,4,5,6,7]
+export const HeroCards = ({data}) => {
+    
     return (
         <div className='container row col-8'>  
         {
-            array.map(()=> <HeroCard/>)
+            data.filter((value,index)=> index < 20 ).map((element)=> <HeroCard name={element.name} image={element.thumbnail.path} key={element.id}/>)
         }
         </div>
     )
